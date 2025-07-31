@@ -1,10 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<h1><%= @menu.title %></h1>
 
-<%= render @menu %>
+<h2>Meals</h2>
+<% @menu.meals.each do |meal| %>
+  <h3><%= meal.day %> – <%= meal.label %></h3>
 
-<div>
-  <%= link_to "Edit this menu", edit_menu_path(@menu) %> |
-  <%= link_to "Back to menus", menus_path %>
+  <ul>
+    <% meal.foods.each do |food| %>
+      <li><%= food.name %></li>
+    <% end %>
+  </ul>
 
-  <%= button_to "Destroy this menu", @menu, method: :delete %>
-</div>
+  <%= link_to 'Add Food', new_menu_meal_food_path(@menu, meal) %>
+<% end %>
+
+<%= link_to 'Add Meal', new_menu_meal_path(@menu) %>
+
