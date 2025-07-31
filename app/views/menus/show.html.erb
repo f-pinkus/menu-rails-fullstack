@@ -1,5 +1,7 @@
 <h1><%= @menu.title %></h1>
 
+<%= link_to 'Back to Menus', menus_path %>
+
 <h2>Meals</h2>
 <% @menu.meals.each do |meal| %>
   <h3><%= meal.day %> – <%= meal.label %></h3>
